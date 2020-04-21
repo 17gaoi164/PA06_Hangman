@@ -1,3 +1,5 @@
+#please download wordslist.txt from our folder
+
 def generate_random_word():
     #from https://www.hangmanwords.com/words
     import random
