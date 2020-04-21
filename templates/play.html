@@ -1,0 +1,42 @@
+{% extends "fancylayout.html" %}
+
+{% block content %}
+  <div class="jumbotron">
+    <h1>Hangman</h1>
+  </div>
+  <p>Here is your word</p>
+  {{state['word_so_far']}}
+  <form method="post" action="/play">
+    Guess a letter: <input type="text" name="guess">
+    <br>
+    <input type="submit" class="btn btn-lg btn-danger">
+  </form>
+  <p>Here are the letters you've guessed already:</p>
+  {% for x in state['guesses'] %}
+   {{x}}
+  {% endfor %}
+
+<p> Tries left: </p>
+{{state['tries']}}
+
+
+{% if state['guessed'] == True %}
+  <script>
+     alert( 'You already guessed this letter!' );
+   </script>
+{% endif %}
+
+
+{% if state['win'] == True %}
+<script>
+   alert( 'You Win! Hit new game to play again.' );
+ </script>
+{% endif %}
+
+{% if state['Tries'] == 0 %}
+<script>
+   alert( 'You Lose. Hit new game to play again.' );
+ </script>
+{% endif %}
+
+{% endblock %}
